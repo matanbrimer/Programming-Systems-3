@@ -94,8 +94,9 @@ int similar (char *s, char *t, int n){
     int count = 0,y=0;
     int sLenght = strlen(s);
     int tLenght = strlen(t);
-   
-    for (int i = 0; (i <strlen(s)) && (y<=strlen(t)) ; i++)
+    if(sLenght<tLenght)return 0;
+    if(sLenght-tLenght > n)return 0;
+    for (int i = 0; i <sLenght && y<tLenght ; i++)
     {       
             if(s[i] != t[y]){
                 count++;
@@ -133,6 +134,7 @@ void print_lines(char *str , char *text){
         {
             temp[o] = text[b];      
         }
+   
         if(substring(temp,str) == 1){
 
             for (int j = start_line;j < size_line;j++)
@@ -141,6 +143,8 @@ void print_lines(char *str , char *text){
             }
         }
          start_line =  size_line;
+         o=0;
+          memset(temp,0,LINE);
     }
     
        
