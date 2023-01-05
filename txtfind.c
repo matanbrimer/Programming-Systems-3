@@ -157,28 +157,22 @@ void print_similar_words(char *str, char *text){
     int tempSizeWord=6;
     char tempWord[WORD];
     int y=0;
-   
+   memset(tempWord,0,WORD);
     while(tempSizeWord < strlen(text)){
         
         sizeWord = getWord(text+tempSizeWord);
-        for (int i = 0+tempSizeWord; i < sizeWord+tempSizeWord; i++,y++)
+        for (int i = tempSizeWord; i < sizeWord+tempSizeWord; i++,y++)
         {
             tempWord[y]=text[i];
         }
          y=0;
-       
 
         if(similar(tempWord,str,1) == 1){
-            for (int j = 0; j < strlen(tempWord); j++)
-            {
-                printf("%c",tempWord[j]);
-            }
-            printf("\n");
-            
+                printf("%s\n",tempWord);
         }
        
-        tempSizeWord = 1+tempSizeWord+  sizeWord;
-        memset(tempWord, 0, sizeof(tempWord));
+        tempSizeWord = 1+tempSizeWord + sizeWord;
+        memset(tempWord, 0, WORD);
 
     }
 
